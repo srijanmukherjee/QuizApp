@@ -30,10 +30,9 @@ class QuestionModel : ViewModel() {
 
     private fun loadQuestions() {
         viewModelScope.launch(Dispatchers.IO) {
-            val _questions: MutableList<Question> = ArrayList()
+            val questions: MutableList<Question> = ArrayList()
 
             var connection: HttpURLConnection? = null
-            var result = ""
 
             try {
                 val url = URL("https://quizapi.io/api/v1/questions?apiKey=${Constant.API_KEY}&limit=10")
@@ -61,8 +60,7 @@ class QuestionModel : ViewModel() {
                         }
                     }
 
-                    result = stringBuilder.toString()
-                    _questions.addAll(parseResult(result))
+                    questions.addAll(parseResult(stringBuilder.toString()))
                 } else {
                     Log.e(tag, "connection failed: ${connection.responseMessage}")
                 }
@@ -74,7 +72,7 @@ class QuestionModel : ViewModel() {
                 connection?.disconnect()
             }
 
-            withContext(Dispatchers.Main) {questions.value = _questions}
+            withContext(Dispatchers.Main) {this@QuestionModel.questions.value = questions}
         }
     }
 

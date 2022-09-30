@@ -226,6 +226,7 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
         finish()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun onSubmit() {
         if (countOptionsSelected() == 0) {
             canSelectOption = true
