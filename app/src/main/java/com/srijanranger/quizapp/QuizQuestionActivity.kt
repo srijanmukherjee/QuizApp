@@ -109,7 +109,9 @@ class QuizQuestionActivity : AppCompatActivity(), View.OnClickListener {
     private fun onQuestionLoad(questions: List<Question>) {
         if (questions.isEmpty()) {
             Log.d(tag, "Questions couldn't be loaded")
-            // TODO show error screen
+            val intent = Intent(this, NetworkErrorActivity::class.java)
+            startActivity(intent)
+            finish()
             return
         }
 
