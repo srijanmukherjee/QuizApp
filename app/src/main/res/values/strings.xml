@@ -8,4 +8,6 @@
     <string name="resultMsg">Good job, %1$s! You have answered %2$d/%3$d questions correctly"</string>
     <string name="congratulations">Congratulations</string>
     <string name="submit">SUBMIT</string>
+    <string name="network_error_message">Sorry! We couldn\'t load the quiz. Make sure you are online</string>
+    <string name="alert_icon">alert icon</string>
 </resources>
